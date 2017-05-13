@@ -8,6 +8,11 @@
 
 (function ($)
 {
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
+
     $('table#inventory_test').DataTable({
         paging: false,
         fixedHeader: true
