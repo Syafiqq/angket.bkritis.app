@@ -9,6 +9,7 @@
 
 (function ($)
 {
+
     $(function ()
     {
         $("a#logout").on('click', function (event)
@@ -93,7 +94,7 @@
                         }
                         if (data['data'].hasOwnProperty('coupon'))
                         {
-                            alert('Nomor Kupon Registrasi = \n' + data['data']['coupon'])
+                            alert('Kode Registrasi Registrasi = \n' + data['data']['coupon'])
                         }
                     }
                 })
