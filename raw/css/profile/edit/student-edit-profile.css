@@ -1,5 +1,11 @@
 body, html {
     height: 100%;
+    background: url("/assets/img/avatar/ui/otak.png") no-repeat center;
+    background-size: 15cm;
+}
+
+.main .container {
+    padding: 32px;
 }
 
 nav.sidebar, .main {
@@ -9,6 +15,14 @@ nav.sidebar, .main {
     transition: margin 200ms ease-out;
 }
 
+.audiojs {
+    background: transparent;
+    box-shadow: none;
+}
+
+.audiojs div {
+    display: none;
+}
 .main {
     padding: 10px 10px 0 10px;
 }
