@@ -8,6 +8,11 @@
 
 (function ($)
 {
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
+
     $(function ()
     {
         $("a#logout").on('click', function (event)
@@ -57,18 +62,18 @@
         });
 
         $("page#printable-area").print({
-         globalStyles: true,
-         mediaPrint: false,
-         stylesheet: null,
-         noPrintSelector: ".no-print",
-         iframe: true,
-         append: null,
-         prepend: null,
-         manuallyCopyFormValues: true,
-         deferred: $.Deferred(),
-         timeout: 750,
-         title: null,
-         doctype: '<!doctype html>'
+            globalStyles: true,
+            mediaPrint: false,
+            stylesheet: null,
+            noPrintSelector: ".no-print",
+            iframe: true,
+            append: null,
+            prepend: null,
+            manuallyCopyFormValues: true,
+            deferred: $.Deferred(),
+            timeout: 750,
+            title: null,
+            doctype: '<!doctype html>'
         });
 
         $("a._nav-a-link").on('click', function (event)
