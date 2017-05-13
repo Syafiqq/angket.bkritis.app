@@ -117,61 +117,65 @@ $profile['birth'] = (($profile['birthplace'] === '-') && ($profile['datebirth'] 
 </nav>
 <div class="main">
     <div class="container">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label for="avatar" class="col-sm-2 control-label">Avatar</label>
-                <div class="col-sm-10">
-                    <img src="<?php echo base_url("{$profile['avatar']}") ?>" alt="<?php echo base_url("{$profile['avatar']}") ?>" class="img-thumbnail" id="avatar" height="256" width="256">
-                </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="avatar" class="col-sm-2 control-label">Avatar</label>
+                        <div class="col-sm-10">
+                            <img src="<?php echo base_url("{$profile['avatar']}") ?>" alt="<?php echo base_url("{$profile['avatar']}") ?>" class="img-thumbnail" id="avatar" height="256" width="256">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nama</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><?php echo "{$profile['name']}" ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">NISN</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><?php echo "{$profile['credential']}" ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Jenis Kelamin</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><?php echo "{$profile['gender']}" ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Sekolah</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><?php echo "{$profile['school']}" ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Kelas</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><?php echo "{$profile['grade']}" ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Alamat</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><?php echo "{$profile['address']}" ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><?php echo "{$profile['birth']}" ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <a class="btn btn-default" href="<?php echo site_url('profile/edit') ?>" role="button">Ubah</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Nama</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo "{$profile['name']}" ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">NISN</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo "{$profile['credential']}" ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Jenis Kelamin</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo "{$profile['gender']}" ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Sekolah</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo "{$profile['school']}" ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Kelas</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo "{$profile['grade']}" ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Alamat</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo "{$profile['address']}" ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Tempat, Tanggal Lahir</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo "{$profile['birth']}" ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <a class="btn btn-default" href="<?php echo site_url('profile/edit') ?>" role="button">Ubah</a>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 <audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
