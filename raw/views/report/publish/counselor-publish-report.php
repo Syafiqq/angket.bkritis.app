@@ -118,6 +118,8 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+
 <page class="page" size="A4" id="printable-area">
     <div class="container" id="print_container">
         <div class="row vertical-align">
@@ -238,17 +240,20 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
                     {
                         $isBold = $result['value'] >= $vg['interval']['min'] ? ($result['value'] <= $vg['interval']['max'] ? 'bold-normal' : '') : '';
                         $suggest = strlen($isBold) > 0 ? $vg['suggest'] : $suggest;
-                        echo '<tr>';
-                        echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['interval']['value']}</td>";
-                        echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['class']}</td>";
-                        echo "<td class=\"font-size-12px {$isBold}\">";
-                        echo "<b>{$vg['interpretation']['key']}</b><ol>";
-                        foreach ($vg['interpretation']['value'] as $kiv => $viv)
+                        if ($isBold)
                         {
-                            echo "<li>{$viv}</li>";
+                            echo '<tr>';
+                            echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['interval']['value']}</td>";
+                            echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['class']}</td>";
+                            echo "<td class=\"font-size-12px {$isBold}\">";
+                            echo "<b>{$vg['interpretation']['key']}</b><ol>";
+                            foreach ($vg['interpretation']['value'] as $kiv => $viv)
+                            {
+                                echo "<li>{$viv}</li>";
+                            }
+                            echo '</ol>';
+                            echo '</td>';
                         }
-                        echo '</ol>';
-                        echo '</td>';
                     }
                     ?>
                     </tbody>
@@ -260,7 +265,7 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
             </div>
             <div class="col-sm-10 text-left">
                 <p style="margin: 4px; font-size: 16px;">
-                    <b>Saran : </b> <?php echo sprintf($suggest, '<b>'.strtoupper($profile['name']).'</b>') ?>
+                    <b>Saran :</b> <?php echo sprintf($suggest, '<b>' . strtoupper($profile['name']) . '</b>') ?>
                 </p>
             </div>
         </div>
@@ -275,7 +280,7 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-2">Kepala Sekolah SMA <?php echo $counselor['school']?></p>
+                <p class="margin-bottom-2">Kepala Sekolah SMA <?php echo $counselor['school'] ?></p>
             </div>
             <div class="col-sm-3 ">
             </div>
@@ -287,28 +292,29 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-2"><?php echo $counselor['head']?></p>
+                <p class="margin-bottom-2"><?php echo $counselor['head'] ?></p>
             </div>
             <div class="col-sm-3 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-2"><?php echo $counselor['name']?></p>
+                <p class="margin-bottom-2"><?php echo $counselor['name'] ?></p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-2"><?php echo $counselor['head_credential']?></p>
+                <p class="margin-bottom-2"><?php echo $counselor['head_credential'] ?></p>
             </div>
             <div class="col-sm-3 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-2"><?php echo $counselor['credential']?></p>
+                <p class="margin-bottom-2"><?php echo $counselor['credential'] ?></p>
             </div>
         </div>
     </div>
 </page>
+<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
@@ -318,7 +324,9 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/tether/dist/js/tether.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jQuery.print/jQuery.print.js') ?>"></script>
+<script src="<?php echo base_url('/assets/bower_components/audiojs/audiojs/audio.min.js') ?>"></script>
 <script src="<?php echo base_url('/assets/js/report/publish/counselor-publish-report.min.js') ?>"></script>
+
 </body>
 </html>
 

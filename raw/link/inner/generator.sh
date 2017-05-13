@@ -9,6 +9,7 @@ counselor_php=(
     "../../../../views/report/publish/counselor-publish-report.php"
     "../../../../views/student/report/counselor-report-student.php"
     "../../../../views/student/view/counselor-view-student.php"
+    "../../../../views/student/detail/counselor-detail-student.php"
 )
 
 counselor_js=(
@@ -21,6 +22,7 @@ counselor_js=(
     "../../../../js/report/publish/counselor-publish-report.js"
     "../../../../js/student/report/counselor-report-student.js"
     "../../../../js/student/view/counselor-view-student.js"
+    "../../../../js/student/detail/counselor-detail-student.js"
 )
 
 counselor_css=(
@@ -30,9 +32,10 @@ counselor_css=(
     "../../../../css/inventory/view/counselor-view-inventory.css"
     "../../../../css/profile/edit/counselor-edit-profile.css"
     "../../../../css/profile/view/counselor-view-profile.css"
-    "../../../../css/report/counselor-publish-report.css"
+    "../../../../css/report/publish/counselor-publish-report.css"
     "../../../../css/student/report/counselor-report-student.css"
     "../../../../css/student/view/counselor-view-student.css"
+    "../../../../css/student/detail/counselor-detail-student.css"
 )
 
 
