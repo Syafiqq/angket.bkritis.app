@@ -9,6 +9,10 @@
 (function ($)
 {
     $('table#report_tb').DataTable();
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
 
 
     $(function ()
