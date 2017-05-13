@@ -8,6 +8,11 @@
 
 (function ($)
 {
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
+
     $('table#result_tb').DataTable({
         paging: false
     });
