@@ -127,7 +127,8 @@ class Inventory extends CI_Controller
                     $this->load->model('minventory', 'inventory');
                     $questions = $this->inventory->getQuestionByActive(1);
                     $options = $this->inventory->getOptions();
-                    $this->load->view('inventory/test/student-test-inventory', compact('questions', 'options'));
+                    $profile = $_SESSION['user']['auth'];
+                    $this->load->view('inventory/test/student-test-inventory', compact('questions', 'options', 'profile'));
                 }
                 else
                 {
