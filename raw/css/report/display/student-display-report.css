@@ -16,6 +16,9 @@ nav.sidebar, .main {
     box-shadow: none;
 }
 
+.main .container {
+    padding: 32px;
+}
 .audiojs div {
     display: none;
 }
