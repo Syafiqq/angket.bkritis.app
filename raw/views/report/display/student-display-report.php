@@ -87,7 +87,7 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
                     </a>
@@ -107,7 +107,7 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory
                         <span class="caret"></span>
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>
@@ -121,7 +121,7 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
                             <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Ftest') ?>">Pengerjaan</a>
                         </li>
                         <li class="divider"></li>
-                        <li>
+                        <li class="active">
                             <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Fresult') ?>">Hasil</a>
                         </li>
                     </ul>

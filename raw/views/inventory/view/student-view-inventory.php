@@ -50,33 +50,83 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-                    <ul class="dropdown-menu forAnimate" role="menu">
-                        <li><a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile') ?>">Lihat</a></li>
-                        <li class="divider"></li>
-                        <li><a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile%2Fedit') ?>">Edit</a></li>
-                    </ul>
+                <li>
+                    <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
+                    </a>
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Profile
+                        <span class="caret"></span>
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
+                    </a>
                     <ul class="dropdown-menu forAnimate" role="menu">
-                        <li><a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">Lihat</a></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile') ?>">Lihat</a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Ftest') ?>">Pengerjaan</a></li>
-                        <li class="divider"></li>
-                        <li><a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Fresult') ?>">Hasil</a></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile%2Fedit') ?>">Edit</a>
+                        </li>
                     </ul>
                 </li>
-                <li ><a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span></a></li>
+                <li class="dropdown active">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory
+                        <span class="caret"></span>
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>
+                    </a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li class="active">
+                            <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">Lihat</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Ftest') ?>">Pengerjaan</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Fresult') ?>">Hasil</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="main">
+<div class="main" style="background-color: rgba(255, 255, 255, .5)">
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>
+                    <b>Petunjuk Pengisian</b>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ol>
+                    <li>Isilah angket dengan kejujuran dan apa adanya sesuai dengan kondisi diri anda. Hasil angket ini tidak akan mempengaruhi nilai mata pelajaran apapun. Kejujuran anda dalam mengisi angket ini akan mempengaruhi pemahaman anda terkait kondisi diri anda.</li>
+                    <li>Isilah setiap pernyataan menurut pendapat Anda dengan memilih satu dari empat alternatif jawaban yang telah disediakan, yaitu:</li>
+                    <dl class="dl-horizontal" style="margin-top: 10px; margin-bottom: 10px">
+                        <dt>Sangat Sesuai</dt>
+                        <dd>: Apabila kondisi yang digambarkan pada item sangat sesuai dengen diri anda</dd>
+                        <dt>Sesuai</dt>
+                        <dd>: Apabila kondisi yang digambarkan pada item cukup sesuai dengen diri anda</dd>
+                        <dt>Kurang Sesuai</dt>
+                        <dd>: Apabila kondisi yang digambarkan pada item kurang sesuai dengen diri anda</dd>
+                        <dt>Tidak Sesuai</dt>
+                        <dd>: Apabila kondisi yang digambarkan pada item tidak sesuai dengen diri anda</dd>
+                    </dl>
+                    <li>Periksa kembali jawaban Anda dan pastikan tidak ada jawaban yang terlewatkan.</li>
+                </ol>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <?php

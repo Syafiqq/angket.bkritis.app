@@ -48,34 +48,78 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                <li class="active">
+                    <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Profile
+                        <span class="caret"></span>
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
+                    </a>
                     <ul class="dropdown-menu forAnimate" role="menu">
-                        <li><a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile') ?>">Lihat</a></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile') ?>">Lihat</a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile%2Fedit') ?>">Edit</a></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile%2Fedit') ?>">Edit</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory
+                        <span class="caret"></span>
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>
+                    </a>
                     <ul class="dropdown-menu forAnimate" role="menu">
-                        <li><a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">Lihat</a></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">Lihat</a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Ftest') ?>">Pengerjaan</a></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Ftest') ?>">Pengerjaan</a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Fresult') ?>">Hasil</a></li>
+                        <li>
+                            <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Fresult') ?>">Hasil</a>
+                        </li>
                     </ul>
                 </li>
-                <li ><a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span></a></li>
+                <li>
+                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
 <div class="main">
-    <div class="container"></div>
+    <div class="container">
+        <h1>Selamat Datang</h1>
+        <h3>
+            Selamat datang di Inventory
+            <b>Berpikir Kritis</b>
+        </h3>
+        <ul>
+            <li style="padding: 2px">Klik
+                <a class="btn btn-default _nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">
+                    <b>Inventory</b>
+                </a>
+                                     &nbsp;untuk memulai pengisian
+            </li>
+            <li style="padding: 2px">Klik
+                <a class="btn btn-default _nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Fresult') ?>">
+                    <b>Hasil</b>
+                </a>
+                                     &nbsp;untuk melihat hasil pengisian
+            </li>
+        </ul>
+    </div>
 </div>
+<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop></audio>
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
