@@ -76,7 +76,7 @@ unset($_categories);
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
                     </a>
@@ -96,13 +96,13 @@ unset($_categories);
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory
                         <span class="caret"></span>
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>
                     </a>
                     <ul class="dropdown-menu forAnimate" role="menu">
-                        <li>
+                        <li class="active">
                             <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">Lihat</a>
                         </li>
                         <li class="divider"></li>
@@ -138,15 +138,14 @@ unset($_categories);
 
 <div class="main">
     <div class="container">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-12">
+                <a class="btn btn-default" href="<?php echo site_url('inventory/add') ?>" role="button">Tambah Inventory</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Panel heading</div>
-                    <div class="panel-body">
-                        <div class="col-sm-2 col-sm-offset-10">
-                            <a class="btn btn-default" href="<?php echo site_url('inventory/add') ?>" role="button">Tambah Inventory</a>
-                        </div>
-                    </div>
                     <div class="table table-responsive">
                         <table id="inventory_tb" class="table table-hover">
                             <thead>

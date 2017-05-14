@@ -61,7 +61,7 @@ if (!isset($favourables))
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
                     </a>
@@ -81,7 +81,7 @@ if (!isset($favourables))
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory
                         <span class="caret"></span>
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>
@@ -91,7 +91,7 @@ if (!isset($favourables))
                             <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">Lihat</a>
                         </li>
                         <li class="divider"></li>
-                        <li>
+                        <li class="active">
                             <a class="_nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory%2Fadd') ?>">Tambah Inventory</a>
                         </li>
                     </ul>
@@ -127,7 +127,7 @@ if (!isset($favourables))
             <div class="form-group">
                 <label for="question" class="col-sm-2 control-label">Pernyataan</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control option-text-disable" id="question" placeholder="Pertanyaan" name="question">
+                    <input type="text" class="form-control option-text-disable" id="question" placeholder="Pernyataan" name="question">
                 </div>
             </div>
             <div class="form-group">

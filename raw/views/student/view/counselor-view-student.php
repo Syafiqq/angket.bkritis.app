@@ -69,7 +69,7 @@ if (!isset($window))
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
                     </a>
@@ -104,13 +104,13 @@ if (!isset($window))
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Data Siswa
                         <span class="caret"></span>
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>
                     </a>
                     <ul class="dropdown-menu forAnimate" role="menu">
-                        <li>
+                        <li class="active">
                             <a class="_nav-a-link" href="<?php echo site_url('student/jump?tab=student') ?>">Aktifkan Siswa</a>
                         </li>
                         <li class="divider"></li>
@@ -134,12 +134,6 @@ if (!isset($window))
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Panel heading</div>
-                    <div class="panel-body">
-                        <div class="col-sm-2 col-sm-offset-10">
-                            <a class="btn btn-default" href="<?php echo site_url('student/report') ?>" role="button">Cetak</a>
-                        </div>
-                    </div>
                     <div class="table-responsive">
                         <table id="student_tb" class="table table-hover">
                             <thead>
@@ -164,30 +158,35 @@ if (!isset($window))
                                 $student['grade'] = $student['grade'] === null ? '-' : $student['grade'];
                                 $student['school'] = $student['school'] === null ? '-' : $student['school'];
                                 $student['last_answer'] = $student['last_answer'] === null ? null : $student['last_answer'];
-                                $activation = $student['last_answer'] === null ? '<p>Sudah Memiliki Izin</p>' : "<button data-student-id=\"{$student['id']}\" data-student-action=\"{$activeURL}\" class=\"btn btn-default do-active\" type=\"submit\">Aktifkan</button>";
+                                $_activation = false;
                                 if ($student['last_answer'] !== null)
                                 {
                                     $student['last_answer'] = Carbon::createFromFormat('Y-m-d H:i:s', $student['last_answer']);
                                     if ((int)$student['is_active'] === 1)
                                     {
                                         $student['last_answer'] = "<span class=\"label label-success\">{$student['last_answer']->formatLocalized('%d %B %Y %H:%M')}</span>";
+                                        $_activation = false;
                                     }
                                     else
                                     {
                                         if ($student['last_answer']->diffInDays($now) <= $window)
                                         {
+                                            $_activation = true;
                                             $student['last_answer'] = "<span class=\"label label-warning\">{$student['last_answer']->formatLocalized('%d %B %Y %H:%M')}</span>";
                                         }
                                         else
                                         {
+                                            $_activation = false;
                                             $student['last_answer'] = "<span class=\"label label-success\">{$student['last_answer']->formatLocalized('%d %B %Y %H:%M')}</span>";
                                         }
                                     }
                                 }
                                 else
                                 {
+                                    $_activation = false;
                                     $student['last_answer'] = '<p>Belum Pernah</p>';
                                 }
+                                $activation = (!$_activation) ? '<p>Sudah Memiliki Izin</p>' : "<button data-student-id=\"{$student['id']}\" data-student-action=\"{$activeURL}\" class=\"btn btn-default do-active\" type=\"submit\">Aktifkan</button>";
 
                                 echo '<tr>';
                                 echo "<td>{$no}</td>";

@@ -66,12 +66,12 @@ $profile['datebirth'] = $profile['datebirth'] === null ? null : $profile['datebi
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
                     </a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Profile
                         <span class="caret"></span>
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
@@ -81,7 +81,7 @@ $profile['datebirth'] = $profile['datebirth'] === null ? null : $profile['datebi
                             <a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile') ?>">Lihat</a>
                         </li>
                         <li class="divider"></li>
-                        <li>
+                        <li class="active">
                             <a class="_nav-a-link" href="<?php echo site_url('profile/jump?tab=profile%2Fedit') ?>">Edit</a>
                         </li>
                     </ul>

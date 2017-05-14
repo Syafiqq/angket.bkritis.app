@@ -115,7 +115,37 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <button id="coupon_generator" class="btn btn-default" data-coupon-action="<?php echo site_url('dashboard/do_generate_coupon') ?>" type="button">Generate Kode Registrasi</button>
+                <h1>Selamat Datang</h1>
+                <h3>
+                    Selamat datang di Inventori
+                    <b>Berpikir Kritis</b>
+                </h3>
+                <ul>
+                    <li style="padding: 2px">Klik
+                        <a class="btn btn-default _nav-a-link" href="<?php echo site_url('inventory/jump?tab=inventory') ?>">
+                            <b>Inventory</b>
+                        </a>
+                                             &nbsp;untuk memulai memodifikasi angket
+                    </li>
+                    <li style="padding: 2px">Klik
+                        <a class="btn btn-default _nav-a-link" href="<?php echo site_url('student/jump?tab=student') ?>">
+                            <b>Siswa</b>
+                        </a>
+                                             &nbsp;untuk melihat daftar siswa
+                    </li>
+                    <li style="padding: 2px">Klik
+                        <a class="btn btn-default _nav-a-link" href="<?php echo site_url('student/jump?tab=student%2Freport') ?>">
+                            <b>Laporan</b>
+                        </a>
+                                             &nbsp;untuk melihat laporan siswa
+                    </li>
+                    <li style="padding: 2px">Klik
+                        <button id="coupon_generator" class="btn btn-default" data-coupon-action="<?php echo site_url('dashboard/do_generate_coupon') ?>" type="button">
+                            <b>Generate Kode Registrasi</b>
+                        </button>
+                                             &nbsp;untuk men-generate kode registrasi pendaftaran
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

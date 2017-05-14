@@ -64,7 +64,7 @@ if (!isset($reports))
         </div>
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a class="_nav-a-link" href="<?php echo site_url('dashboard/jump?tab=dashboard') ?>">B-Kritis
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
                     </a>
@@ -99,7 +99,7 @@ if (!isset($reports))
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Data Siswa
                         <span class="caret"></span>
                         <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>
@@ -109,7 +109,7 @@ if (!isset($reports))
                             <a class="_nav-a-link" href="<?php echo site_url('student/jump?tab=student') ?>">Aktifkan Siswa</a>
                         </li>
                         <li class="divider"></li>
-                        <li>
+                        <li class="active">
                             <a class="_nav-a-link" href="<?php echo site_url('student/jump?tab=student%2Freport') ?>">Nilai Siswa</a>
                         </li>
                     </ul>
@@ -130,9 +130,6 @@ if (!isset($reports))
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Panel heading</div>
-                    <div class="panel-body">
-                    </div>
                     <div class="table-responsive">
                         <table id="report_tb" class="table table-hover">
                             <thead>
@@ -142,7 +139,7 @@ if (!isset($reports))
                                 <th>Nama</th>
                                 <th style="width: 100px">Kelas</th>
                                 <th style="width: 100px">Sekolah</th>
-                                <th style="width: 100px">Cetak</th>
+                                <th style="width: 100px">Detail</th>
                             </tr>
                             </thead>
                             <tbody>
