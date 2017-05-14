@@ -8,11 +8,6 @@
 
 (function ($)
 {
-    audiojs.events.ready(function ()
-    {
-        var aj = audiojs.createAll();
-    });
-
     $(function ()
     {
         $("a#logout").on('click', function (event)
