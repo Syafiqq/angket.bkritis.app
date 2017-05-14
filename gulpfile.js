@@ -6,6 +6,12 @@ var uglify = require('gulp-uglify');
 var htmlmin = require('gulp-htmlmin');
 var pump = require('pump');
 
+gulp.task('move-assets-exclude-css-js', function ()
+{
+    return gulp.src(['./raw/**', '!./raw/{link,link/**,views,views/**}', '!./raw/**/(*.css|*.js)'], {base: './raw/'})
+        .pipe(gulp.dest('./assets/'));
+});
+
 gulp.task('minify-js', function (cb)
 {
     pump([
@@ -38,10 +44,14 @@ gulp.task('minify-html', function ()
         .pipe(gulp.dest('./application/views/'));
 });
 
-gulp.task('move-assets-exclude-css-js', function ()
+gulp.task('watch-move-assets-exclude-css-js', function ()
 {
-    return gulp.src(['./raw/**', '!./raw/{link,link/**,views,views/**}', '!./raw/**/(*.css|*.js)'], {base: './raw/'})
-        .pipe(gulp.dest('./assets/'));
+    // Callback mode, useful if any plugin in the pipeline depends on the `end`/`flush` event
+    return watch(['./raw/**', '!./raw/{link,link/**,views,views/**}', '!./raw/**/(*.css|*.js)'], function ()
+    {
+        return gulp.src(['./raw/**', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*(*.css|*.js)'], {base: './raw/'})
+            .pipe(gulp.dest('./assets/'));
+    });
 });
 
 gulp.task('watch-minify-js', function ()
@@ -85,15 +95,5 @@ gulp.task('watch-minify-html', function ()
         return gulp.src('./raw/views/**/*.{php,html}', {base: './raw/views/'})
             .pipe(htmlmin({collapseWhitespace: true}))
             .pipe(gulp.dest('./application/views/'));
-    });
-});
-
-gulp.task('watch-move-assets-exclude-css-js', function ()
-{
-    // Callback mode, useful if any plugin in the pipeline depends on the `end`/`flush` event
-    return watch(['./raw/**', '!./raw/{link,link/**,views,views/**}', '!./raw/**/(*.css|*.js)'], function ()
-    {
-        return gulp.src(['./raw/**', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*(*.css|*.js)'], {base: './raw/'})
-            .pipe(gulp.dest('./assets/'));
     });
 });
