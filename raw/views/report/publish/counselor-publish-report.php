@@ -243,7 +243,9 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
                         if ($isBold)
                         {
                             echo '<tr>';
-                            echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['interval']['value']}</td>";
+                            echo "<td class=\"font-size-12px text-center {$isBold}\">";
+                            printf("%.4g%%", $result['value']);
+                            echo "</td>";
                             echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['class']}</td>";
                             echo "<td class=\"font-size-12px {$isBold}\">";
                             echo "<b>{$vg['interpretation']['key']}</b><ol>";
@@ -262,11 +264,6 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
         </div>
         <div class="row">
             <div class="col-sm-1">
-            </div>
-            <div class="col-sm-10 text-left">
-                <p style="margin: 4px; font-size: 16px;">
-                    <b>Saran :</b> <?php echo sprintf($suggest, '<b>' . strtoupper($profile['name']) . '</b>') ?>
-                </p>
             </div>
         </div>
         <div class="row" style="margin-top: .5cm">
