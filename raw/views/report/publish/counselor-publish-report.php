@@ -94,25 +94,14 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">Site</a>
+            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">Berpikir Kritis</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="<?php echo site_url('inventory') ?>">Inventory</a>
-                </li>
-                <li>
-                    <a href="<?php echo site_url('student') ?>">Siswa</a>
-                </li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout</a>
-                </li>
-                <li>
-                    <a href="<?php echo site_url('profile') ?>">Profile</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
