@@ -118,53 +118,11 @@ if (!isset($questions))
             <div class="col-sm-12">
                 <form id="test" action="<?php echo site_url('inventory/do_calculate') ?>" method="post" class="form-horizontal">
                     <div class="table table-responsive">
-                        <table id="inventory_test" class="table table-striped">
+                        <table id="inventory_test" class="table" style="width: 95%">
                             <thead>
                             <tr>
                                 <th style="width: 40px">No</th>
                                 <th>Pertanyaan</th>
-                                <th class="_mini-text" style="width: 50px">T&nbsp;S
-                                    <br>
-                                                                           I&nbsp;E
-                                    <br>
-                                                                           D&nbsp;S
-                                    <br>
-                                                                           A&nbsp;U
-                                    <br>
-                                                                           K&nbsp;A
-                                    <br>&nbsp;&nbsp;I
-                                </th>
-                                <th class="_mini-text" style="width: 50px">K&nbsp;S
-                                    <br>
-                                                                           U&nbsp;E
-                                    <br>
-                                                                           R&nbsp;S
-                                    <br>
-                                                                           A&nbsp;U
-                                    <br>
-                                                                           N&nbsp;A
-                                    <br>
-                                                                           G&nbsp;I
-                                </th>
-                                <th class="_mini-text" style="width: 50px">&nbsp;S
-                                    <br>&nbsp;E
-                                    <br>&nbsp;S
-                                    <br>&nbsp;U
-                                    <br>&nbsp;A
-                                    <br>&nbsp;I
-                                </th>
-                                <th class="_mini-text" style="width: 50px">S&nbsp;S
-                                    <br>
-                                                                           A&nbsp;E
-                                    <br>
-                                                                           N&nbsp;S
-                                    <br>
-                                                                           G&nbsp;U
-                                    <br>
-                                                                           A&nbsp;A
-                                    <br>
-                                                                           T&nbsp;I
-                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -176,12 +134,27 @@ if (!isset($questions))
                                 $id = "q{$question['id']}";
                                 echo '<tr>';
                                 echo "<td>{$_no}</td>";
-                                echo "<td>{$question['question']}</td>";
+                                echo '<td>';
+                                echo '<div class="row">';
+                                echo '<div class="col-sm-12">';
+                                echo "<p>{$question['question']}</p>";
+                                echo '</div>';
+                                echo '</div>';
                                 foreach ($options as $ko => $option)
                                 {
                                     $checked = $ko == 0 ? '' : '';
-                                    echo "<td><div class=\"radio\"><label><input type=\"radio\" name=\"question[{$id}]\" value=\"{$option['id']}\" aria-label=\"{$option['id']}\" {$checked}></label></div></td>";
+                                    echo '<div class="row">';
+                                    echo '<div class="col-lg-12">';
+                                    echo '<div class="input-group">';
+                                    echo '<span class="input-group-addon">';
+                                    echo "<input type=\"radio\" name=\"question[{$id}]\" value=\"{$option['id']}\" aria-label=\"{$option['id']}\">";
+                                    echo '</span>';
+                                    echo "<input type=\"text\" class=\"form-control\" aria-label=\"{$option['id']}\" value=\"{$option['name']}\" disabled='disabled'>";
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
                                 }
+                                echo '</td>';
                                 echo '</tr>';
                             }
                             ?>

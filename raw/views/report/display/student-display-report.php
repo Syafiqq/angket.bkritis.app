@@ -137,7 +137,7 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
 </nav>
 
 <div class="main">
-    <div class="container" id="print_container">
+    <div class="container" style="background-color: #fff;">
         <div class="row vertical-align">
             <div class="col-sm-12 text-center">
                 <p id="content_welcome" class="margin-bottom-4" style="font-weight: bold; font-size: 20px">HASIL INVENTORI</p>
@@ -214,7 +214,7 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
                     <thead>
                     <tr>
                         <th width="150" class="text-center font-size-14px">
-                            <b>Interval Persentase</b>
+                            <b>Persentase</b>
                         </th>
                         <th width="150" class="text-center font-size-14px">
                             <b>Klasifikasi</b>
@@ -227,12 +227,14 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
                     <tbody>
                     <?php foreach ($grading as $kg => $vg)
                     {
-                        $isBold = $result['value'] >= $vg['interval']['min'] ? ($result['value'] <= $vg['interval']['max'] ? 'bold-normal' : '') : '';
+                        $isBold = $result['value'] > $vg['interval']['min'] ? ($result['value'] <= $vg['interval']['max'] ? 'bold-normal' : '') : '';
                         $suggest = strlen($isBold) > 0 ? $vg['suggest'] : $suggest;
                         if ($isBold)
                         {
                             echo '<tr>';
-                            echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['interval']['value']}</td>";
+                            echo "<td class=\"font-size-12px text-center {$isBold}\">";
+                            printf("%.4g%%", $result['value']);
+                            echo '</td>';
                             echo "<td class=\"font-size-12px text-center {$isBold}\">{$vg['class']}</td>";
                             echo "<td class=\"font-size-12px {$isBold}\">";
                             echo "<b>{$vg['interpretation']['key']}</b><ol>";
@@ -254,7 +256,6 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
             </div>
             <div class="col-sm-10 text-left">
                 <p style="margin: 4px; font-size: 16px;">
-                    <b>Saran :</b> <?php echo sprintf($suggest, 'anda') ?>
                 </p>
             </div>
         </div>

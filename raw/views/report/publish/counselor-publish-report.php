@@ -214,7 +214,7 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
                     <thead>
                     <tr>
                         <th width="150" class="text-center font-size-14px">
-                            <b>Interval Persentase</b>
+                            <b>Persentase</b>
                         </th>
                         <th width="150" class="text-center font-size-14px">
                             <b>Klasifikasi</b>
@@ -227,7 +227,7 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
                     <tbody>
                     <?php foreach ($grading as $kg => $vg)
                     {
-                        $isBold = $result['value'] >= $vg['interval']['min'] ? ($result['value'] <= $vg['interval']['max'] ? 'bold-normal' : '') : '';
+                        $isBold = $result['value'] > $vg['interval']['min'] ? ($result['value'] <= $vg['interval']['max'] ? 'bold-normal' : '') : '';
                         $suggest = strlen($isBold) > 0 ? $vg['suggest'] : $suggest;
                         if ($isBold)
                         {
@@ -266,7 +266,7 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-2">Kepala Sekolah SMA <?php echo $counselor['school'] ?></p>
+                <p class="margin-bottom-2">Kepala SMP <?php echo $counselor['school'] ?></p>
             </div>
             <div class="col-sm-3 ">
             </div>

@@ -180,8 +180,8 @@ $profile['birth'] = (($profile['birthplace'] === '-') && ($profile['datebirth'] 
                                     $cid = ".{$cv['id']}";
                                     printf('<td>%.4f %%</td>', $av['category'][$cid]);
                                 }
-                                $url = site_url("report/publish?answer={$av['id']}");
-                                echo "<td><a class=\"btn btn-default\" href=\"{$url}\" role=\"button\">Cetak</a></td>";
+                                $url = site_url("report/jump?tab=" . urlencode("report/publish?answer={$av['id']}"));
+                                echo "<td><a class=\"btn btn-default _nav-a-link\" href=\"{$url}\" role=\"button\">Detail</a></td>";
                                 echo '</tr>';
                             }
                             ?>

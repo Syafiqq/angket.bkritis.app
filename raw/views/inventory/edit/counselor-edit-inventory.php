@@ -152,21 +152,6 @@ if (!isset($question))
                 </div>
             </div>
             <div class="form-group">
-                <label for="favour" class="col-sm-2 control-label">Favourable</label>
-                <div class="col-sm-10">
-                    <select id="favour" name="favour" class="form-control">
-                        <?php
-                        foreach ($favourables as $favourable)
-                        {
-                            $favourable['description'] = ucfirst($favourable['description']);
-                            $selected = $favourable['id'] === $question['favour'] ? 'selected' : '';
-                            echo "<option value=\"{$favourable['id']}\" {$selected}>{$favourable['description']}</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="active" class="col-sm-2 control-label">Aktif</label>
                 <div class="col-sm-10">
                     <?php
