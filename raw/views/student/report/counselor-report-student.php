@@ -150,7 +150,8 @@ if (!isset($reports))
                                 ++$no;
                                 $student['grade'] = $student['grade'] === null ? '-' : $student['grade'];
                                 $student['school'] = $student['school'] === null ? '-' : $student['school'];
-                                $url = site_url('student/detail');
+                                $url = site_url("student/jump?tab=" . urlencode("student/detail/{$student['id']}"));
+
 
                                 echo '<tr>';
                                 echo "<td>{$no}</td>";
@@ -158,9 +159,7 @@ if (!isset($reports))
                                 echo "<td>{$student['name']}</td>";
                                 echo "<td>{$student['grade']}</td>";
                                 echo "<td>{$student['school']}</td>";
-                                echo "<form id=\"login\" action=\"{$url}\" method=\"get\">";
-                                echo "<td><input type='hidden' name='student' class='hidden' value='{$student['id']}'><button type=\"submit\" class=\"btn btn-default\">Detail</button></td>";
-                                echo '</form>';
+                                echo "<td><a class=\"btn btn-default _nav-a-link\" href=\"{$url}\" role=\"button\">Detail</a></td>";
                                 echo '</tr>';
                             }
                             ?>
