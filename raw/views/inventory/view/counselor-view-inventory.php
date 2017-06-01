@@ -12,10 +12,12 @@ if (!isset($categories))
     $categories = [];
 }
 
-if (!isset($favourables))
+$_favourables = [];
+foreach ($favourables as $favourable)
 {
-    $favourables = [];
+    $_favourables[".{$favourable['id']}"] = $favourable;
 }
+$favourables = $_favourables;
 
 if (!isset($questions))
 {
@@ -166,22 +168,13 @@ unset($_categories);
                             $activeURL = site_url('inventory/do_change_active');
                             foreach ($questions as $no => $question)
                             {
-                                $url = site_url("inventory/edit/{$question['id']}");
+                                $url = site_url("inventory/jump?tab=" . urlencode("inventory/edit/{$question['id']}"));
                                 ++$no;
                                 echo '<tr>';
                                 echo "<td>{$no}</td>";
                                 echo "<td>{$question['question']}</td>";
                                 echo "<td>{$categories['.'.$question['category']]['name']}</td>";
-                                echo '<td>';
-                                echo "<select data-question-id=\"{$question['id']}\" id=\"favour\" name=\"favour\" class=\"form-control\" data-question-action=\"{$favourURL}\">";
-                                foreach ($favourables as $favourable)
-                                {
-                                    $favourable['description'] = ucfirst($favourable['description']);
-                                    $selected = $favourable['id'] === $question['favour'] ? 'selected' : '';
-                                    echo "<option value=\"{$favourable['id']}\" {$selected}>{$favourable['description']}</option>";
-                                }
-                                echo '</select>';
-                                echo '</td>';
+                                echo '<td>' . ucfirst($favourables['.' . $question['favour']]['description']) . '</td>';
                                 echo '<td>';
                                 echo "<select data-question-id=\"{$question['id']}\" id=\"active\" name=\"active\" class=\"form-control\" data-question-action=\"$activeURL\">";
                                 foreach ([['id' => 1, 'description' => 'Aktif'], ['id' => 0, 'description' => 'Tidak Aktif']] as $active)
@@ -191,7 +184,7 @@ unset($_categories);
                                 }
                                 echo '</select>';
                                 echo '</td>';
-                                echo "<td><a class=\"btn btn-default\" href=\"{$url}\" role=\"button\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a></td>";
+                                echo "<td><a class=\"btn btn-default _nav-a-link\" href=\"{$url}\" role=\"button\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a></td>";
                                 echo '</tr>';
                             }
                             ?>
