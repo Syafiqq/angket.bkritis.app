@@ -125,6 +125,15 @@ if (!isset($favourables))
     <div class="container">
         <form id="add" action="<?php echo site_url('inventory/do_add') ?>" method="post" class="form-horizontal">
             <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <span class="label label-danger">Perhatian : </span>&nbsp;Sebelum anda menambahkan item pernyataan.
+                    <strong>Pastikan</strong>&nbsp;bahwa item pernyataan yang akan anda tambahkan telah diuji validitas dan realibilitasnya sesuai dengan prosedur pengembangan inventori berpikir kritis akademik siswa SMP yang telah tertulis pada
+                    <strong>
+                        <i>Manual Book</i>
+                    </strong>&nbsp;Aplikasi ini.
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="question" class="col-sm-2 control-label">Pernyataan</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control option-text-disable" id="question" placeholder="Pernyataan" name="question">
@@ -134,7 +143,7 @@ if (!isset($favourables))
                 <label for="category" class="col-sm-2 control-label">Kategori</label>
                 <div class="col-sm-10">
                     <select id="category" name="category" class="form-control">
-                        <option class="option-select-disable">Kategori</option>
+                        <option class="option-select-disable" value="-1">Silahkan Pilih</option>
                         <?php
                         foreach ($categories as $category)
                         {
@@ -149,7 +158,7 @@ if (!isset($favourables))
                 <label for="favour" class="col-sm-2 control-label">Favourable</label>
                 <div class="col-sm-10">
                     <select id="favour" name="favour" class="form-control">
-                        <option class="option-select-disable">Favourable</option>
+                        <option class="option-select-disable" value="-1">Silahkan Pilih</option>
                         <?php
                         foreach ($favourables as $favourable)
                         {
@@ -164,9 +173,24 @@ if (!isset($favourables))
                 <label for="active" class="col-sm-2 control-label">Aktif</label>
                 <div class="col-sm-10">
                     <select id="active" name="active" class="form-control">
+                        <option class="option-select-disable" value="-1">Silahkan Pilih</option>
                         <option value="1">Aktif</option>
                         <option value="0">Tidak Aktif</option>
                     </select>
+                </div>
+            </div>
+            <div class="form-group" style="background-color: white">
+                <label for="caution" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input id="caution" type="checkbox" required class="option-checkbox-disable">
+                            Dengan ini saya menyatakan bahwa pernyataan yang saya tambahkan telah teruji validitas dan realibilitiasnya sesuai dengan prosedur pengembangan inventori berpikir kritis akademik siswa SMP yang telah tertulis pada
+                            <strong>
+                                <i>Manual Book</i>
+                            </strong>&nbsp;Aplikasi ini.
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="form-group">

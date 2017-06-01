@@ -19,6 +19,7 @@
         {
             $("option.option-select-disable").prop('selected', true);
             $("input.option-text-disable").val('');
+            $("input.option-checkbox-disable").prop('checked', false);
         }
 
         $("form#add").on('submit', function (event)
