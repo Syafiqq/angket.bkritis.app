@@ -22,7 +22,7 @@ if (!function_exists('interpretCritical'))
         return [
             '.1' => [
                 'interval' => [
-                    'min' => 67,
+                    'min' => 66,
                     'max' => 100,
                     'value' => '67 - 100%'
                 ],
@@ -42,7 +42,7 @@ if (!function_exists('interpretCritical'))
             ],
             '.2' => [
                 'interval' => [
-                    'min' => 34,
+                    'min' => 33,
                     'max' => 66,
                     'value' => '34 - 66%'
                 ],
@@ -62,7 +62,7 @@ if (!function_exists('interpretCritical'))
             ],
             '.3' => [
                 'interval' => [
-                    'min' => 0,
+                    'min' => -1,
                     'max' => 33,
                     'value' => '0 - 33%'
                 ],
