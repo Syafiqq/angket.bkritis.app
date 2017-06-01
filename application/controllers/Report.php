@@ -50,7 +50,9 @@ class Report extends CI_Controller
         {
             case 'counselor' :
             {
-                if (isset($_GET['answer']))
+                $this->load->helper('identity_checking');
+                $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                if (isset($_GET['answer']) && $allowed)
                 {
                     $this->load->model('minventory', 'inventory');
                     $this->load->model('mauth', 'auth');
@@ -137,15 +139,40 @@ class Report extends CI_Controller
     {
         if ($this->input->is_ajax_request() && ($_SERVER['REQUEST_METHOD'] === 'POST'))
         {
+            $path = urldecode($_GET['tab']);
+
             switch ($_SESSION['user']['auth']['role'])
             {
                 case 'counselor' :
                 {
-                    return;
+                    $this->load->helper('identity_checking');
+                    $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                    switch ($path)
+                    {
+                        case substr($path, 0, 14) === "report/publish" :
+                        {
+                            if ($allowed)
+                            {
+                                echo apiMakeCallback(API_SUCCESS, "Jump To [{$path}]", [], site_url("/{$path}"));
+                            }
+                            else
+                            {
+                                echo apiMakeCallback(API_NOT_ACCEPTABLE, 'Access Denied', ['notify' => [['Data diri anda belum lengkap', 'info']]]);
+                            }
+                        }
+                            break;
+                        default:
+                        {
+                            echo apiMakeCallback(API_BAD_REQUEST, 'Permintaan Tidak Dapat Dikenali', ['notify' => [['Permintaan Tidak Dapat Dikenali', 'danger']]]);
+                        }
+                            break;
+                    }
+                    break;
                 }
                 case 'student' :
                 {
                     echo apiMakeCallback(API_BAD_REQUEST, 'Permintaan Tidak Dapat Dikenali', ['notify' => [['Permintaan Tidak Dapat Dikenali', 'danger']]]);
+
                     return;
                 }
             }

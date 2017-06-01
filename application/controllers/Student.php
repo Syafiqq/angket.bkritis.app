@@ -52,23 +52,32 @@ class Student extends CI_Controller
         {
             case 'counselor' :
             {
-                $this->load->model('mauth', 'auth');
-                $this->load->model('manswer', 'answer');
-                $students = $this->auth->getAllStudent();
-                $_answered = $this->answer->getLatestAnsweredAllStudent();
-                $answered = [];
-                foreach ($_answered as $ans)
+                $this->load->helper('identity_checking');
+                $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                if ($allowed)
                 {
-                    $answered[".{$ans['student']}"] = $ans;
+                    $this->load->model('mauth', 'auth');
+                    $this->load->model('manswer', 'answer');
+                    $students = $this->auth->getAllStudent();
+                    $_answered = $this->answer->getLatestAnsweredAllStudent();
+                    $answered = [];
+                    foreach ($_answered as $ans)
+                    {
+                        $answered[".{$ans['student']}"] = $ans;
+                    }
+                    $window = 7;
+                    $now = Carbon::now('Asia/Jakarta');
+                    foreach ($students as $id => $st)
+                    {
+                        $students[$id]['last_answer'] = isset($answered[".{$st['id']}"]) ? $answered[".{$st['id']}"]['answer_at'] : null;
+                    }
+                    unset($answered, $_answered);
+                    $this->load->view('student/view/counselor-view-student', compact('students', 'window', 'now'));
                 }
-                $window = 7;
-                $now = Carbon::now('Asia/Jakarta');
-                foreach ($students as $id => $st)
+                else
                 {
-                    $students[$id]['last_answer'] = isset($answered[".{$st['id']}"]) ? $answered[".{$st['id']}"]['answer_at'] : null;
+                    redirect('dashboard');
                 }
-                unset($answered, $_answered);
-                $this->load->view('student/view/counselor-view-student', compact('students', 'window', 'now'));
 
                 return;
             }
@@ -81,22 +90,24 @@ class Student extends CI_Controller
         }
     }
 
-    public function detail()
+    public function detail($student = 1)
     {
         switch ($_SESSION['user']['auth']['role'])
         {
             case 'counselor' :
             {
-                if (isset($_GET['student']))
+                $this->load->helper('identity_checking');
+                $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                if ($student && $allowed)
                 {
                     $this->load->model('minventory', 'inventory');
                     $this->load->model('mauth', 'auth');
 
-                    $profile = $this->auth->findStudentByID($_GET['student']);
+                    $profile = $this->auth->findStudentByID($student);
                     $profile = $profile[0];
-                    $_answered = $this->inventory->getAnsweredUser($_GET['student']);
+                    $_answered = $this->inventory->getAnsweredUser($student);
                     $answered = [];
-                    $result = $this->inventory->getAnsweredResultByUser($_GET['student']);
+                    $result = $this->inventory->getAnsweredResultByUser($student);
                     $categories = $this->inventory->getCategory();
                     foreach ($_answered as $av)
                     {
@@ -139,24 +150,33 @@ class Student extends CI_Controller
         {
             case 'counselor' :
             {
-                $this->load->model('mauth', 'auth');
-                $this->load->model('manswer', 'answer');
-                $this->load->model('mreport', 'report');
-                $_students = $this->auth->getAllAnsweredStudent();
-                $students = [];
-                $answered = $this->answer->getAll();
-                $reports = $this->report->getAll();
-                foreach ($_students as $student)
+                $this->load->helper('identity_checking');
+                $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                if ($allowed)
                 {
-                    $student['answered'] = [];
-                    $students[".{$student['id']}"] = $student;
+                    $this->load->model('mauth', 'auth');
+                    $this->load->model('manswer', 'answer');
+                    $this->load->model('mreport', 'report');
+                    $_students = $this->auth->getAllAnsweredStudent();
+                    $students = [];
+                    $answered = $this->answer->getAll();
+                    $reports = $this->report->getAll();
+                    foreach ($_students as $student)
+                    {
+                        $student['answered'] = [];
+                        $students[".{$student['id']}"] = $student;
+                    }
+                    foreach ($answered as $answer)
+                    {
+                        array_push($students[".{$answer['student']}"]['answered'], $answer);
+                    }
+                    unset($_students, $answered, $answer, $student);
+                    $this->load->view('student/report/counselor-report-student', compact('students', 'reports'));
                 }
-                foreach ($answered as $answer)
+                else
                 {
-                    array_push($students[".{$answer['student']}"]['answered'], $answer);
+                    redirect('dashboard');
                 }
-                unset($_students, $answered, $answer, $student);
-                $this->load->view('student/report/counselor-report-student', compact('students', 'reports'));
 
                 return;
             }
@@ -202,16 +222,22 @@ class Student extends CI_Controller
                 {
                     case 'counselor' :
                     {
+                        $this->load->helper('identity_checking');
+                        $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
                         switch ($path)
                         {
-                            case 'student' :
+                            case substr($path, 0, 14) === "student/report" :
+                            case substr($path, 0, 14) === "student/detail" :
+                            case substr($path, 0, 7) === "student" :
                             {
-                                echo apiMakeCallback(API_SUCCESS, "Jump To [{$path}]", [], site_url("/{$path}"));
-                            }
-                                break;
-                            case 'student/report' :
-                            {
-                                echo apiMakeCallback(API_SUCCESS, "Jump To [{$path}]", [], site_url("/{$path}"));
+                                if ($allowed)
+                                {
+                                    echo apiMakeCallback(API_SUCCESS, "Jump To [{$path}]", [], site_url("/{$path}"));
+                                }
+                                else
+                                {
+                                    echo apiMakeCallback(API_NOT_ACCEPTABLE, 'Access Denied', ['notify' => [['Data diri anda belum lengkap', 'info']]]);
+                                }
                             }
                                 break;
                             default:

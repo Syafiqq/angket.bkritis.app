@@ -52,11 +52,20 @@ class Inventory extends CI_Controller
         {
             case 'counselor' :
             {
-                $this->load->model('minventory', 'inventory');
-                $favourables = $this->inventory->getFavourable();
-                $categories = $this->inventory->getCategory();
-                $questions = $this->inventory->getQuestion();
-                $this->load->view('inventory/view/counselor-view-inventory', compact('favourables', 'categories', 'questions'));
+                $this->load->helper('identity_checking');
+                $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                if ($allowed)
+                {
+                    $this->load->model('minventory', 'inventory');
+                    $favourables = $this->inventory->getFavourable();
+                    $categories = $this->inventory->getCategory();
+                    $questions = $this->inventory->getQuestion();
+                    $this->load->view('inventory/view/counselor-view-inventory', compact('favourables', 'categories', 'questions'));
+                }
+                else
+                {
+                    redirect('dashboard');
+                }
 
                 return;
             }
@@ -185,10 +194,19 @@ class Inventory extends CI_Controller
         {
             case 'counselor' :
             {
-                $this->load->model('minventory', 'inventory');
-                $categories = $this->inventory->getCategory();
-                $favourables = $this->inventory->getFavourable();
-                $this->load->view('inventory/add/counselor-add-inventory', compact('categories', 'favourables'));
+                $this->load->helper('identity_checking');
+                $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                if ($allowed)
+                {
+                    $this->load->model('minventory', 'inventory');
+                    $categories = $this->inventory->getCategory();
+                    $favourables = $this->inventory->getFavourable();
+                    $this->load->view('inventory/add/counselor-add-inventory', compact('categories', 'favourables'));
+                }
+                else
+                {
+                    redirect('dashboard');
+                }
 
                 return;
             }
@@ -201,7 +219,7 @@ class Inventory extends CI_Controller
         }
     }
 
-    public function edit($id)
+    public function edit($id = 1)
     {
         switch ($_SESSION['user']['auth']['role'])
         {
@@ -209,7 +227,9 @@ class Inventory extends CI_Controller
             {
                 $this->load->model('minventory', 'inventory');
                 $question = $this->inventory->getQuestionByID($id);
-                if (count($question) > 0)
+                $this->load->helper('identity_checking');
+                $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+                if ((count($question) > 0) && $allowed)
                 {
                     $question = $question[0];
                     $categories = $this->inventory->getCategory();
@@ -243,10 +263,10 @@ class Inventory extends CI_Controller
             )
             {
                 if (
-                    (strlen($_POST['question']) > 0) &&
-                    (strlen($_POST['category']) > 0) &&
-                    (strlen($_POST['favour']) > 0) &&
-                    (strlen($_POST['active']) > 0)
+                    (strlen($_POST['question']) >= 0) &&
+                    ((int)$_POST['category'] >= 0) &&
+                    ((int)$_POST['favour'] >= 0) &&
+                    ((int)$_POST['active'] >= 0)
                 )
                 {
                     $this->load->model('minventory', 'inventory');
@@ -276,19 +296,18 @@ class Inventory extends CI_Controller
             if (isset($_POST['id']) &&
                 isset($_POST['question']) &&
                 isset($_POST['category']) &&
-                isset($_POST['favour']) &&
                 isset($_POST['active'])
             )
             {
                 if (
                     (strlen($_POST['question']) > 0) &&
-                    (strlen($_POST['category']) > 0) &&
-                    (strlen($_POST['favour']) > 0) &&
-                    (strlen($_POST['active']) > 0)
+                    ((int)$_POST['category'] > 0) &&
+                    ((int)$_POST['active'] > 0)
                 )
                 {
                     $this->load->model('minventory', 'inventory');
-                    $this->inventory->updateQuestionByID($_POST['id'], $_POST['question'], $_POST['category'], $_POST['favour'], $_POST['active']);
+                    $question = $this->inventory->getQuestionByID($_POST['id'])[0];
+                    $this->inventory->updateQuestionByID($_POST['id'], $_POST['question'], $_POST['category'], $question['favour'], $_POST['active']);
                     echo apiMakeCallback(API_SUCCESS, 'Update Soal Berhasil', ['notify' => [['Update Soal Berhasil', 'success']]], site_url('/inventory'));
                 }
                 else
@@ -457,16 +476,23 @@ class Inventory extends CI_Controller
                 {
                     case 'counselor' :
                     {
+                        $this->load->helper('identity_checking');
+                        $allowed = isCounselorIdentityComplete($_SESSION['user']['auth']);
+
                         switch ($path)
                         {
-                            case 'inventory' :
+                            case substr($path, 0, 14) === "inventory/edit" :
+                            case substr($path, 0, 13) === "inventory/add" :
+                            case substr($path, 0, 9) === "inventory" :
                             {
-                                echo apiMakeCallback(API_SUCCESS, "Jump To [{$path}]", [], site_url("/{$path}"));
-                            }
-                                break;
-                            case 'inventory/add' :
-                            {
-                                echo apiMakeCallback(API_SUCCESS, "Jump To [{$path}]", [], site_url("/{$path}"));
+                                if ($allowed)
+                                {
+                                    echo apiMakeCallback(API_SUCCESS, "Jump To [{$path}]", [], site_url("/{$path}"));
+                                }
+                                else
+                                {
+                                    echo apiMakeCallback(API_NOT_ACCEPTABLE, 'Access Denied', ['notify' => [['Data diri anda belum lengkap', 'info']]]);
+                                }
                             }
                                 break;
                             default:
