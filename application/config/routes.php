@@ -51,5 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'welcome';
 $route['inventory/edit/(:num)'] = 'inventory/edit/$1';
+$route['student/detail/(:num)'] = 'student/detail/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
