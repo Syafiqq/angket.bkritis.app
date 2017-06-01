@@ -184,7 +184,7 @@
         {
             Cookies.set(uuid, make_json_form_data());
             $.notify({
-                message: 'Jawaban Berhasil disimpan.'
+                message: 'Jawaban sementara telah disimpan.'
             }, {
                 type: 'info',
                 delay: 1000,
@@ -207,8 +207,9 @@
             table = $('table#inventory_test').DataTable({
                 searching: false,
                 ordering: false,
-                paging: false,
-                fixedHeader: true,
+                pageLength: 10,
+                paging: true,
+                fixedHeader: false,
                 bLengthChange: false
             });
         }
@@ -236,7 +237,7 @@
 
         load_content(uuid);
 
-        var intervalID = window.setInterval(myCallback, 20000);
+        var intervalID = window.setInterval(myCallback, 60000);
 
         function myCallback()
         {
