@@ -82,7 +82,7 @@
     <div class="container">
         <div class="intro-text">
             <div class="intro-lead-in">Selamat Datang di</div>
-            <div class="intro-heading">Aplikasi Inventori</div>
+            <div class="intro-heading">Software Inventori</div>
             <div class="intro-heading">Berprikis Kritis Akademik</div>
             <div class="intro-heading-post">Siswa SMP</div>
             <a href="<?php echo site_url('auth/login')?>" class="page-scroll btn btn-xl"> Login</a>

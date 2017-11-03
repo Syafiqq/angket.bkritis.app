@@ -130,7 +130,7 @@ if (!isset($favourables))
                     <strong>Pastikan</strong>&nbsp;bahwa item pernyataan yang akan anda tambahkan telah diuji validitas dan realibilitasnya sesuai dengan prosedur pengembangan inventori berpikir kritis akademik siswa SMP yang telah tertulis pada
                     <strong>
                         <i>Manual Book</i>
-                    </strong>&nbsp;Aplikasi ini.
+                    </strong>&nbsp;Software ini.
                 </div>
             </div>
             <div class="form-group">
@@ -188,7 +188,7 @@ if (!isset($favourables))
                             Dengan ini saya menyatakan bahwa pernyataan yang saya tambahkan telah teruji validitas dan realibilitiasnya sesuai dengan prosedur pengembangan inventori berpikir kritis akademik siswa SMP yang telah tertulis pada
                             <strong>
                                 <i>Manual Book</i>
-                            </strong>&nbsp;Aplikasi ini.
+                            </strong>&nbsp;Software ini.
                         </label>
                     </div>
                 </div>
